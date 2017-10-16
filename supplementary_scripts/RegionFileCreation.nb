@@ -1,0 +1,722 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     32474,        713]
+NotebookOptionsPosition[     31703,        681]
+NotebookOutlinePosition[     32080,        698]
+CellTagsIndexPosition[     32037,        695]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Configuration", "Section",
+ CellChangeTimes->{{3.596238297118021*^9, 3.5962383050705767`*^9}}],
+
+Cell["\<\
+Most of these are self-explanitory.  MapFile should be an image with the \
+regions you want to color in white and everything else in black.  This can be \
+flipped by setting InvertImage to True.\
+\>", "Text",
+ CellChangeTimes->{{3.5962391929213943`*^9, 3.5962392618716793`*^9}, {
+  3.5962513951125107`*^9, 3.5962514030444593`*^9}, {3.5962541097881107`*^9, 
+  3.5962541100960617`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"TerritoryFiles", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<aden\>\"", ",", "\n", "\"\<afghanistan\>\"", ",", "\n", 
+      "\"\<alaska\>\"", ",", "\n", "\"\<albania\>\"", ",", "\n", 
+      "\"\<algeria\>\"", ",", "\n", "\"\<americanmidwest\>\"", ",", "\n", 
+      "\"\<americannorthwest\>\"", ",", "\n", "\"\<americansouth\>\"", ",", 
+      "\n", "\"\<americansouthwest\>\"", ",", "\n", "\"\<angolia\>\"", ",", 
+      "\n", "\"\<ankara\>\"", ",", "\n", "\"\<apulia\>\"", ",", "\n", 
+      "\"\<argentina\>\"", ",", "\n", "\"\<armenia\>\"", ",", "\n", 
+      "\"\<beijing\>\"", ",", "\n", "\"\<belgium\>\"", ",", "\n", 
+      "\"\<berlin\>\"", ",", "\n", "\"\<bohemia\>\"", ",", "\n", 
+      "\"\<borneo\>\"", ",", "\n", "\"\<brazil\>\"", ",", "\n", 
+      "\"\<brest\>\"", ",", "\n", "\"\<britishcolumbia\>\"", ",", "\n", 
+      "\"\<budapest\>\"", ",", "\n", "\"\<bulgaria\>\"", ",", "\n", 
+      "\"\<burg\>\"", ",", "\n", "\"\<burma\>\"", ",", "\n", 
+      "\"\<centralamerica\>\"", ",", "\n", "\"\<chad\>\"", ",", "\n", 
+      "\"\<clyde\>\"", ",", "\n", "\"\<congo\>\"", ",", "\n", "\"\<const\>\"",
+       ",", "\n", "\"\<denmark\>\"", ",", "\n", "\"\<eastaustralia\>\"", ",", 
+      "\n", "\"\<eastnewguinea\>\"", ",", "\n", "\"\<eastsiberia\>\"", ",", 
+      "\n", "\"\<edinburgh\>\"", ",", "\n", "\"\<egypt\>\"", ",", "\n", 
+      "\"\<finland\>\"", ",", "\n", "\"\<galacia\>\"", ",", "\n", 
+      "\"\<gascony\>\"", ",", "\n", "\"\<greece\>\"", ",", "\n", 
+      "\"\<guangzhou\>\"", ",", "\n", "\"\<hawaii\>\"", ",", "\n", 
+      "\"\<hokkaido\>\"", ",", "\n", "\"\<holland\>\"", ",", "\n", 
+      "\"\<honshu\>\"", ",", "\n", "\"\<india\>\"", ",", "\n", 
+      "\"\<indochina\>\"", ",", "\n", "\"\<iraq\>\"", ",", "\n", 
+      "\"\<kamchaka\>\"", ",", "\n", "\"\<kazakh\>\"", ",", "\n", 
+      "\"\<khabarovsk\>\"", ",", "\n", "\"\<kiel\>\"", ",", "\n", 
+      "\"\<korea\>\"", ",", "\n", "\"\<libya\>\"", ",", "\n", 
+      "\"\<liverpool\>\"", ",", "\n", "\"\<livonia\>\"", ",", "\n", 
+      "\"\<london\>\"", ",", "\n", "\"\<madagascar\>\"", ",", "\n", 
+      "\"\<malaya\>\"", ",", "\n", "\"\<manchuria\>\"", ",", "\n", 
+      "\"\<marianasislands\>\"", ",", "\n", "\"\<mars\>\"", ",", "\n", 
+      "\"\<mexico\>\"", ",", "\n", "\"\<moscow\>\"", ",", "\n", 
+      "\"\<munich\>\"", ",", "\n", "\"\<naples\>\"", ",", "\n", 
+      "\"\<newcaledonia\>\"", ",", "\n", "\"\<newengland\>\"", ",", "\n", 
+      "\"\<newzealand\>\"", ",", "\n", "\"\<na\>\"", ",", "\n", 
+      "\"\<northsakalin\>\"", ",", "\n", "\"\<northwestterritories\>\"", ",", 
+      "\n", "\"\<norway\>\"", ",", "\n", "\"\<ontario\>\"", ",", "\n", 
+      "\"\<outermongolia\>\"", ",", "\n", "\"\<pacificcoast\>\"", ",", "\n", 
+      "\"\<pakistan\>\"", ",", "\n", "\"\<paris\>\"", ",", "\n", 
+      "\"\<peru\>\"", ",", "\n", "\"\<phillippines\>\"", ",", "\n", 
+      "\"\<picardy\>\"", ",", "\n", "\"\<piedmont\>\"", ",", "\n", 
+      "\"\<port\>\"", ",", "\n", "\"\<prussia\>\"", ",", "\n", 
+      "\"\<quebec\>\"", ",", "\n", "\"\<rome\>\"", ",", "\n", "\"\<ruhr\>\"", 
+      ",", "\n", "\"\<rumania\>\"", ",", "\n", "\"\<russia\>\"", ",", "\n", 
+      "\"\<saudiaarabia\>\"", ",", "\n", "\"\<serbia\>\"", ",", "\n", 
+      "\"\<sev\>\"", ",", "\n", "\"\<sichuan\>\"", ",", "\n", 
+      "\"\<silesia\>\"", ",", "\n", "\"\<sinkiang\>\"", ",", "\n", 
+      "\"\<smyrna\>\"", ",", "\n", "\"\<somalia\>\"", ",", "\n", 
+      "\"\<southafrica\>\"", ",", "\n", "\"\<southsakalin\>\"", ",", "\n", 
+      "\"\<spain\>\"", ",", "\n", "\"\<stp\>\"", ",", "\n", "\"\<sumatra\>\"",
+       ",", "\n", "\"\<sweden\>\"", ",", "\n", "\"\<syria2\>\"", ",", "\n", 
+      "\"\<syria\>\"", ",", "\n", "\"\<tanganyika\>\"", ",", "\n", 
+      "\"\<thailand\>\"", ",", "\n", "\"\<tibet\>\"", ",", "\n", 
+      "\"\<trieste\>\"", ",", "\n", "\"\<tunis\>\"", ",", "\n", 
+      "\"\<tuscany\>\"", ",", "\n", "\"\<tyrolia\>\"", ",", "\n", 
+      "\"\<ukraine\>\"", ",", "\n", "\"\<usa\>\"", ",", "\n", "\"\<uzbek\>\"",
+       ",", "\n", "\"\<venezuela\>\"", ",", "\n", "\"\<venice\>\"", ",", 
+      "\n", "\"\<vienna\>\"", ",", "\n", "\"\<wales\>\"", ",", "\n", 
+      "\"\<warsaw\>\"", ",", "\n", "\"\<westafrica\>\"", ",", "\n", 
+      "\"\<westaustralia\>\"", ",", "\n", "\"\<westnewguinea\>\"", ",", "\n", 
+      "\"\<westsiberia\>\"", ",", "\n", "\"\<yorkshire\>\""}], "}"}]}], ";"}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "MapFile", " ", "=", " ", 
+   "\"\</Users/dwhalen/Desktop/Splash Fall 2014/Script/FillMap.png\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InvertImage", " ", "=", " ", "True"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "ImageOutputDirectory", " ", "=", "  ", 
+   "\"\</Users/dwhalen/Desktop/Splash Fall 2014/Script/images\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "WorkOutputFile", " ", "=", "  ", 
+    "\"\</Users/dwhalen/Desktop/Splash Fall 2014/saveddata.mx\>\""}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Option", " ", "are", " ", "\"\<Full\>\"", " ", "or", " ", 
+    "\"\<HitMiss\>\""}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InnerOuterType", " ", "=", " ", "\"\<Full\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OuterBorderWidth", " ", "=", " ", "5"}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"In", " ", "pixels"}], " ", "*)"}], 
+  "\[IndentingNewLine]"}]}], "Input",
+ CellChangeTimes->{{3.596238309186487*^9, 3.596238403237954*^9}, {
+   3.596238500224165*^9, 3.596238576291957*^9}, {3.596238686732368*^9, 
+   3.596238689436167*^9}, {3.5962390163478727`*^9, 3.596239020507018*^9}, {
+   3.596239197929865*^9, 3.5962392001376133`*^9}, {3.5962394213019047`*^9, 
+   3.596239429511199*^9}, {3.596240695217443*^9, 3.596240714423965*^9}, {
+   3.5962408344357357`*^9, 3.596240835899605*^9}, {3.5962409879632998`*^9, 
+   3.596240988406254*^9}, {3.596251364523171*^9, 3.59625142991897*^9}, {
+   3.596254090899701*^9, 3.596254100976919*^9}, {3.596255376463114*^9, 
+   3.596255438625379*^9}, 3.596256527580406*^9, {3.5962571865371723`*^9, 
+   3.5962573636335487`*^9}, {3.5962577786563797`*^9, 
+   3.5962577926718597`*^9}, {3.602285599617016*^9, 3.6022856007062483`*^9}, {
+   3.624271207552341*^9, 3.62427153959062*^9}, {3.624381152011586*^9, 
+   3.624381152811899*^9}, {3.624381495646097*^9, 3.6243814980882673`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Code", "Section",
+ CellChangeTimes->{{3.596238597021502*^9, 3.596238597395225*^9}}],
+
+Cell["Load the images and divide them into sections.", "Text",
+ CellChangeTimes->{{3.5962386088140793`*^9, 3.5962386445558977`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"image", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"MapFile", ",", "\"\<Image\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{"InvertImage", ",", " ", 
+    RowBox[{
+     RowBox[{"image", " ", "=", " ", 
+      RowBox[{"ColorNegate", "[", "image", "]"}]}], ";"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"morph", "=", 
+   RowBox[{"MorphologicalComponents", "[", "image", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"numregions", " ", "=", " ", 
+    RowBox[{"Max", "[", "morph", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"regionsowned", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "TerritoryFiles"}], "}"}]}], "]"}]}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.596238604235388*^9, 3.596238606804813*^9}, {
+   3.596238651807218*^9, 3.596238698810307*^9}, {3.596238818619774*^9, 
+   3.59623882996385*^9}, {3.596238918785631*^9, 3.596238922307356*^9}, 
+   3.5962389706066837`*^9, {3.596239022856173*^9, 3.596239039730332*^9}, {
+   3.596239180823591*^9, 3.596239185590448*^9}, {3.596239266131606*^9, 
+   3.596239351417314*^9}, {3.5962513159527283`*^9, 3.59625133231959*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"savedata", "[", "]"}], ":=", 
+   RowBox[{"Put", "[", 
+    RowBox[{"regionsowned", ",", "WorkOutputFile"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"loaddata", "[", "]"}], ":=", " ", 
+   RowBox[{"regionsowned", "=", 
+    RowBox[{"Get", "[", "WorkOutputFile", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"displaymap", "[", 
+    RowBox[{"regionsowned_", ",", "territory_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"morphtocolor", ",", "i", ",", "j"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"Generate", " ", "a", " ", "color", " ", "function"}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"currentcolor", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"othercolor", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", ".5", ",", ".5"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"unownedcolor", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"blackcolor", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"morphtocolor", "[", "0", "]"}], "=", "blackcolor"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", "numregions"}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"morphtocolor", "[", "i", "]"}], "=", "unownedcolor"}], 
+         ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", 
+         RowBox[{"Length", "[", "regionsowned", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"j", "=", "1"}], ",", 
+           RowBox[{"j", "\[LessEqual]", 
+            RowBox[{"Length", "[", 
+             RowBox[{"regionsowned", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"morphtocolor", "[", 
+              RowBox[{"regionsowned", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "j"}], "]"}], "]"}], "]"}], "=", 
+             RowBox[{"Which", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"TerritoryFiles", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "territory"}], 
+               ",", "currentcolor", ",", "True", ",", "othercolor"}], "]"}]}],
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Image", "[", 
+       RowBox[{"Map", "[", 
+        RowBox[{"morphtocolor", ",", "morph", ",", 
+         RowBox[{"{", "2", "}"}]}], "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onclick", "[", "territory_", "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{"y_", ",", "x_"}], "}"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "morphnum", ",", "xdim", ",", "ydim"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"xdim", ",", "ydim"}], "}"}], "=", 
+       RowBox[{"Dimensions", "[", "morph", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"morphnum", " ", "=", " ", 
+       RowBox[{"morph", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"Ceiling", "[", 
+           RowBox[{"xdim", "-", "x"}], "]"}], ",", 
+          RowBox[{"Ceiling", "[", "y", "]"}]}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", 
+         RowBox[{"Length", "[", "TerritoryFiles", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"territory", " ", "\[Equal]", " ", 
+            RowBox[{"TerritoryFiles", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"MemberQ", "[", 
+               RowBox[{
+                RowBox[{"regionsowned", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ",", "morphnum"}], "]"}], 
+              ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"regionsowned", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "=", 
+                RowBox[{"Complement", "[", 
+                 RowBox[{
+                  RowBox[{"regionsowned", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", 
+                  RowBox[{"{", "morphnum", "}"}]}], "]"}]}], ";"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"regionsowned", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "=", 
+                RowBox[{"Append", "[", 
+                 RowBox[{
+                  RowBox[{"regionsowned", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", "morphnum"}], "]"}]}],
+                ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+       ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allwhite", " ", "=", " ", 
+   RowBox[{"ImageAdd", "[", 
+    RowBox[{"image", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allblack", " ", "=", " ", 
+   RowBox[{"ImageAdd", "[", 
+    RowBox[{"image", ",", 
+     RowBox[{"-", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"alltrans", " ", "=", " ", 
+    RowBox[{"SetAlphaChannel", "[", 
+     RowBox[{"allwhite", ",", "allblack"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"exportdata", "[", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "alphachannel", ",", "morphtocolor", ",", "exportimage", ",", 
+      "innerimage", ",", "outerimage", ",", "exportinner", ",", "exportouter",
+       ",", "i", ",", "j", ",", "k"}], "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "TerritoryFiles", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"j", "=", "0"}], ",", 
+          RowBox[{"j", "\[LessEqual]", "numregions"}], ",", 
+          RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"morphtocolor", "[", "j", "]"}], "=", "0"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"j", "=", "1"}], ",", 
+          RowBox[{"j", "\[LessEqual]", 
+           RowBox[{"Length", "[", 
+            RowBox[{"regionsowned", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ",", 
+          RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"morphtocolor", "[", 
+             RowBox[{"regionsowned", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", "j"}], "]"}], "]"}], "]"}], "=", "1"}], 
+           ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"alphachannel", " ", "=", " ", 
+         RowBox[{"Image", "[", 
+          RowBox[{"Map", "[", 
+           RowBox[{"morphtocolor", ",", "morph", ",", 
+            RowBox[{"{", "2", "}"}]}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"innerimage", ",", "outerimage"}], "}"}], " ", "=", " ", 
+         RowBox[{
+          RowBox[{"GetMask", "[", "InnerOuterType", "]"}], "[", 
+          "alphachannel", "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Export", "[", 
+         RowBox[{
+          RowBox[{"ImageOutputDirectory", "<>", "\"\</\>\"", "<>", 
+           RowBox[{"TerritoryFiles", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "<>", "\"\<_inner\>\"", "<>", 
+           "\"\<.png\>\""}], ",", "innerimage", ",", "\"\<png\>\""}], "]"}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"Export", "[", 
+         RowBox[{
+          RowBox[{"ImageOutputDirectory", "<>", "\"\</\>\"", "<>", 
+           RowBox[{"TerritoryFiles", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "<>", "\"\<_outer\>\"", "<>", 
+           "\"\<.png\>\""}], ",", "outerimage", ",", "\"\<png\>\""}], "]"}], 
+        ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GetMask", "[", "\"\<Full\>\"", "]"}], "[", "mask_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"SetAlphaChannel", "[", 
+     RowBox[{"allwhite", ",", "mask"}], "]"}], ",", " ", "alltrans"}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GetMask", "[", "\"\<HitMiss\>\"", "]"}], "[", "mask_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"innermask", ",", "outermask"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"innermask", " ", "=", " ", 
+      RowBox[{"HitMissTransform", "[", 
+       RowBox[{"mask", ",", " ", 
+        RowBox[{"DiskMatrix", "[", "OuterBorderWidth", "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"outermask", " ", "=", " ", 
+      RowBox[{"ImageSubtract", "[", 
+       RowBox[{"mask", ",", "innermask"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"SetAlphaChannel", "[", 
+        RowBox[{"allwhite", ",", "innermask"}], "]"}], ",", " ", 
+       RowBox[{"SetAlphaChannel", "[", 
+        RowBox[{"allwhite", ",", "outermask"}], "]"}]}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5962408079787483`*^9, 3.596240809385703*^9}, {
+   3.596240846337455*^9, 3.596240880126152*^9}, {3.596240929945204*^9, 
+   3.596240937054912*^9}, {3.59624097945851*^9, 3.596240991660235*^9}, {
+   3.596241098779735*^9, 3.5962411118987217`*^9}, {3.596241156947385*^9, 
+   3.596241158315407*^9}, {3.5962412206873903`*^9, 3.596241226489924*^9}, {
+   3.596241260284561*^9, 3.596241263113364*^9}, {3.596241837843539*^9, 
+   3.596241853168407*^9}, {3.596241930148005*^9, 3.596241950992982*^9}, {
+   3.59624231423897*^9, 3.596242325910446*^9}, {3.5962424726211357`*^9, 
+   3.596242736595715*^9}, {3.596242876658536*^9, 3.596242926624271*^9}, {
+   3.596242968192165*^9, 3.5962429768362617`*^9}, {3.596243111439067*^9, 
+   3.596243113496263*^9}, {3.5962443888962917`*^9, 3.596244415871174*^9}, {
+   3.596244556425942*^9, 3.596244633167861*^9}, {3.5962446665870047`*^9, 
+   3.5962447164804697`*^9}, {3.59624475129777*^9, 3.5962448282575827`*^9}, {
+   3.596244928186078*^9, 3.596244929441938*^9}, {3.5962449685941677`*^9, 
+   3.596244990991736*^9}, {3.5962450274712563`*^9, 3.596245065319652*^9}, {
+   3.596245116078354*^9, 3.596245132610573*^9}, {3.596245176194426*^9, 
+   3.596245211464533*^9}, {3.5962452693908043`*^9, 3.596245280663596*^9}, {
+   3.596249642771769*^9, 3.5962496436659737`*^9}, {3.596249785986462*^9, 
+   3.596249787503038*^9}, {3.596249841849031*^9, 3.596249901130611*^9}, {
+   3.596250260108066*^9, 3.5962502612967157`*^9}, {3.5962503813859053`*^9, 
+   3.596250401352873*^9}, 3.59625045733117*^9, {3.596250519848913*^9, 
+   3.596250525729928*^9}, {3.596250825095916*^9, 3.596250825365728*^9}, {
+   3.596254116556081*^9, 3.596254180484775*^9}, {3.596254215063039*^9, 
+   3.5962543180271*^9}, {3.596254360450488*^9, 3.596254443101894*^9}, {
+   3.596255502220584*^9, 3.596255510550764*^9}, {3.596255543009038*^9, 
+   3.596255557882987*^9}, {3.596255606827496*^9, 3.5962556496439543`*^9}, {
+   3.596255812523609*^9, 3.596255970373123*^9}, {3.596256025291873*^9, 
+   3.5962560257408*^9}, {3.596256085491198*^9, 3.596256085868545*^9}, {
+   3.5962561234704647`*^9, 3.596256129475441*^9}, {3.596256223204361*^9, 
+   3.596256226006699*^9}, {3.596256348127002*^9, 3.596256392177895*^9}, {
+   3.596256437750822*^9, 3.5962565214361897`*^9}, {3.596256668464294*^9, 
+   3.596256690041175*^9}, {3.596256866355294*^9, 3.596256868515551*^9}, {
+   3.602285433476162*^9, 3.602285489999538*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Interactive", "Section",
+ CellChangeTimes->{{3.5962507152073936`*^9, 3.596250718699566*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ClickPane", "[", 
+    RowBox[{
+     RowBox[{"displaymap", "[", 
+      RowBox[{"regionsowned", ",", "territory"}], "]"}], ",", 
+     RowBox[{"onclick", "[", "territory", "]"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Row", "[", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{"territory", ",", " ", "TerritoryFiles"}], "}"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Spacer", "[", "100", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Button", "[", 
+       RowBox[{"\"\<Save\>\"", ",", 
+        RowBox[{"savedata", "[", "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Spacer", "[", "20", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Button", "[", 
+       RowBox[{"\"\<Load\>\"", ",", 
+        RowBox[{"loaddata", "[", "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Spacer", "[", "100", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Button", "[", 
+       RowBox[{"\"\<Export\>\"", ",", 
+        RowBox[{"exportdata", "[", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+     "}"}], "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"territory", ",", 
+     RowBox[{"ControlType", "\[Rule]", "None"}]}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.596240213254713*^9, 3.596240216571786*^9}, {
+   3.596240280167601*^9, 3.5962403202587643`*^9}, {3.596240394434392*^9, 
+   3.596240483714876*^9}, {3.596240638641151*^9, 3.5962406841755047`*^9}, {
+   3.596240752905011*^9, 3.5962407945305*^9}, {3.596240841230351*^9, 
+   3.596240843143243*^9}, {3.596241295207755*^9, 3.596241308467331*^9}, {
+   3.596241758065785*^9, 3.5962417626136913`*^9}, {3.596243029620123*^9, 
+   3.596243041671419*^9}, {3.596244248579719*^9, 3.596244276730348*^9}, {
+   3.596244370027074*^9, 3.596244407240899*^9}, {3.596244532027679*^9, 
+   3.596244551191288*^9}, {3.59624485105373*^9, 3.596244856161228*^9}, {
+   3.596249638835195*^9, 3.596249639596875*^9}, 3.596249740623917*^9, {
+   3.596250527769574*^9, 3.596250529652711*^9}, {3.596250725933895*^9, 
+   3.596250752159926*^9}, {3.596251341272482*^9, 3.59625134368804*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`territory$$ = "usa", Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`territory$$], {
+      "aden", "afghanistan", "alaska", "albania", "algeria", 
+       "americanmidwest", "americannorthwest", "americansouth", 
+       "americansouthwest", "angolia", "ankara", "apulia", "argentina", 
+       "armenia", "beijing", "belgium", "berlin", "bohemia", "borneo", 
+       "brazil", "brest", "britishcolumbia", "budapest", "bulgaria", "burg", 
+       "burma", "centralamerica", "chad", "clyde", "congo", "const", 
+       "denmark", "eastaustralia", "eastnewguinea", "eastsiberia", 
+       "edinburgh", "egypt", "finland", "galacia", "gascony", "greece", 
+       "guangzhou", "hawaii", "hokkaido", "holland", "honshu", "india", 
+       "indochina", "iraq", "kamchaka", "kazakh", "khabarovsk", "kiel", 
+       "korea", "libya", "liverpool", "livonia", "london", "madagascar", 
+       "malaya", "manchuria", "marianasislands", "mars", "mexico", "moscow", 
+       "munich", "naples", "newcaledonia", "newengland", "newzealand", "na", 
+       "northsakalin", "northwestterritories", "norway", "ontario", 
+       "outermongolia", "pacificcoast", "pakistan", "paris", "peru", 
+       "phillippines", "picardy", "piedmont", "port", "prussia", "quebec", 
+       "rome", "ruhr", "rumania", "russia", "saudiaarabia", "serbia", "sev", 
+       "sichuan", "silesia", "sinkiang", "smyrna", "somalia", "southafrica", 
+       "southsakalin", "spain", "stp", "sumatra", "sweden", "syria2", "syria",
+        "tanganyika", "thailand", "tibet", "trieste", "tunis", "tuscany", 
+       "tyrolia", "ukraine", "usa", "uzbek", "venezuela", "venice", "vienna", 
+       "wales", "warsaw", "westafrica", "westaustralia", "westnewguinea", 
+       "westsiberia", "yorkshire"}}, {
+      Hold[
+       Row[{
+         Manipulate`Place[1], 
+         Spacer[100], 
+         Button["Save", 
+          $CellContext`savedata[]], 
+         Spacer[20], 
+         Button["Load", 
+          $CellContext`loaddata[]], 
+         Spacer[100], 
+         Button["Export", 
+          $CellContext`exportdata[]]}]], Manipulate`Dump`ThisIsNotAControl}, {
+     
+      Hold[$CellContext`territory$$]}}, Typeset`size$$ = {619., {225., 229.}},
+     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`territory$1198$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, "Variables" :> {$CellContext`territory$$ = "aden"}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`territory$$, $CellContext`territory$1198$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ClickPane[
+        $CellContext`displaymap[$CellContext`regionsowned, \
+$CellContext`territory$$], 
+        $CellContext`onclick[$CellContext`territory$$]], 
+      "Specifications" :> {{$CellContext`territory$$, {
+         "aden", "afghanistan", "alaska", "albania", "algeria", 
+          "americanmidwest", "americannorthwest", "americansouth", 
+          "americansouthwest", "angolia", "ankara", "apulia", "argentina", 
+          "armenia", "beijing", "belgium", "berlin", "bohemia", "borneo", 
+          "brazil", "brest", "britishcolumbia", "budapest", "bulgaria", 
+          "burg", "burma", "centralamerica", "chad", "clyde", "congo", 
+          "const", "denmark", "eastaustralia", "eastnewguinea", "eastsiberia",
+           "edinburgh", "egypt", "finland", "galacia", "gascony", "greece", 
+          "guangzhou", "hawaii", "hokkaido", "holland", "honshu", "india", 
+          "indochina", "iraq", "kamchaka", "kazakh", "khabarovsk", "kiel", 
+          "korea", "libya", "liverpool", "livonia", "london", "madagascar", 
+          "malaya", "manchuria", "marianasislands", "mars", "mexico", 
+          "moscow", "munich", "naples", "newcaledonia", "newengland", 
+          "newzealand", "na", "northsakalin", "northwestterritories", 
+          "norway", "ontario", "outermongolia", "pacificcoast", "pakistan", 
+          "paris", "peru", "phillippines", "picardy", "piedmont", "port", 
+          "prussia", "quebec", "rome", "ruhr", "rumania", "russia", 
+          "saudiaarabia", "serbia", "sev", "sichuan", "silesia", "sinkiang", 
+          "smyrna", "somalia", "southafrica", "southsakalin", "spain", "stp", 
+          "sumatra", "sweden", "syria2", "syria", "tanganyika", "thailand", 
+          "tibet", "trieste", "tunis", "tuscany", "tyrolia", "ukraine", "usa",
+           "uzbek", "venezuela", "venice", "vienna", "wales", "warsaw", 
+          "westafrica", "westaustralia", "westnewguinea", "westsiberia", 
+          "yorkshire"}, ControlPlacement -> 1}, 
+        Row[{
+          Manipulate`Place[1], 
+          Spacer[100], 
+          Button["Save", 
+           $CellContext`savedata[]], 
+          Spacer[20], 
+          Button["Load", 
+           $CellContext`loaddata[]], 
+          Spacer[100], 
+          Button["Export", 
+           $CellContext`exportdata[]]}], {$CellContext`territory$$, 
+         ControlType -> None}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{664., {271., 276.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.596240685287385*^9, 3.596240719109229*^9, 3.5962409419680347`*^9, 
+   3.596240994981359*^9, {3.596241304204002*^9, 3.596241308848241*^9}, {
+   3.5962417588586187`*^9, 3.596241762980954*^9}, {3.596243032507559*^9, 
+   3.596243041974265*^9}, 3.596243116990835*^9, 3.5962442776019583`*^9, {
+   3.5962451852628117`*^9, 3.596245213750598*^9}, 3.596249647099024*^9, 
+   3.5962497457844143`*^9, 3.5962498699859467`*^9, 3.596249912070622*^9, 
+   3.596250266153903*^9, 3.596250469538878*^9, 3.596250534084278*^9, 
+   3.596250727325365*^9, {3.5962513358352633`*^9, 3.596251344261693*^9}, 
+   3.596256157212263*^9, 3.596256230903994*^9, 3.596256871914448*^9, 
+   3.5962573739081917`*^9, 3.5962578619310102`*^9, 3.602285350973803*^9, {
+   3.624381131503407*^9, 3.624381155154892*^9}, 3.6243814999965353`*^9, 
+   3.6243816686646233`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1117, 980},
+WindowMargins->{{164, Automatic}, {84, Automatic}},
+ShowSelection->True,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 100, 1, 64, "Section"],
+Cell[682, 25, 394, 7, 49, "Text"],
+Cell[1079, 34, 6500, 112, 2341, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7616, 151, 89, 1, 64, "Section"],
+Cell[7708, 154, 132, 1, 30, "Text"],
+Cell[7843, 157, 1341, 35, 114, "Input"],
+Cell[9187, 194, 13358, 308, 1134, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22582, 507, 98, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[22705, 512, 2316, 45, 267, "Input"],
+Cell[25024, 559, 6651, 118, 564, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

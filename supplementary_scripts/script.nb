@@ -1,0 +1,542 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22114,        533]
+NotebookOptionsPosition[     21434,        506]
+NotebookOutlinePosition[     21788,        522]
+CellTagsIndexPosition[     21745,        519]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+URL of spreadsheet is below.  Should end in \
+\[OpenCurlyDoubleQuote]&output=xls to export as an xls file\
+\[CloseCurlyDoubleQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.624450467733783*^9, 3.624450483750201*^9}, {
+  3.62518692752908*^9, 3.6251869420074797`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getsheet", "[", "name_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "i", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "sheetnames", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"sheetnames", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "name"}], ",", 
+          RowBox[{"Return", "[", 
+           RowBox[{"sheetdata", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "@", "False"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.624462660571525*^9, 3.624462663194792*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "url", "=", 
+   "\"\<https://docs.google.com/spreadsheet/ccc?key=0Ah1IA-\
+xVfHtmdDMyd2lOZFV5Rm40anloaDF1b3doc0E&output=xls\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "path", " ", "=", " ", "\"\<~/Desktop/Splash Fall 2014/Script/\>\""}], ";", 
+  " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Current", " ", "path", " ", "to", " ", "the", " ", "Script", " ", 
+    "folder"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"ImageInputDirectory", "=", 
+   RowBox[{"path", "<>", "\"\<images\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UnderlayFile", " ", "=", "  ", 
+    RowBox[{"path", "<>", "\"\<overlay2.png\>\""}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"csv", " ", "=", " ", 
+   RowBox[{"URLSave", "[", 
+    RowBox[{"url", ",", " ", "\"\<~/Desktop/xls.xlsx\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sheetdata", " ", "=", " ", 
+   RowBox[{"Import", "[", " ", "\"\<~/Desktop/xls.xlsx\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sheetnames", " ", "=", " ", 
+   RowBox[{"Import", "[", " ", 
+    RowBox[{"\"\<~/Desktop/xls.xlsx\>\"", ",", "\"\<Sheets\>\""}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6244504303473873`*^9, 3.624450507032415*^9}, {
+  3.624450554170347*^9, 3.624450561000414*^9}, {3.624450869622316*^9, 
+  3.624450874381186*^9}, {3.624451064703483*^9, 3.624451092668797*^9}, {
+  3.6244511845051003`*^9, 3.62445120576506*^9}, {3.6244518004138517`*^9, 
+  3.624451800500029*^9}, {3.624451880807778*^9, 3.6244518910301533`*^9}, {
+  3.624452013646134*^9, 3.624452031413941*^9}, {3.624462097479783*^9, 
+  3.6244621272093887`*^9}, {3.624462446976945*^9, 3.624462475184341*^9}, {
+  3.62446258979559*^9, 3.6244626572856407`*^9}, {3.624462713946466*^9, 
+  3.624462723638981*^9}, {3.625186954361827*^9, 3.625186954703064*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"turnname", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"getsheet", "[", "\"\<HiddenData\>\"", "]"}], "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1"}], "]"}], "]"}], "//", "Round"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"turnsheet", " ", "=", " ", 
+    RowBox[{"getsheet", "[", 
+     RowBox[{"\"\<Turn \>\"", "<>", 
+      RowBox[{"ToString", "[", "turnname", "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"placenames", " ", "=", " ", 
+   RowBox[{"turnsheet", "[", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"2", ";;"}], ",", "1"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"placeowners", " ", "=", " ", 
+    RowBox[{"turnsheet", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"2", ";;"}], ",", "2"}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Figure", " ", "out", " ", "what", " ", "the", " ", "player", " ", 
+    "colors", " ", "are"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"colorsheet", " ", "=", " ", 
+   RowBox[{"getsheet", "[", "\"\<PlayerData\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "playercolorsubs", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", " ", "=", " ", "2"}], ",", 
+     RowBox[{"i", "\[LessEqual]", 
+      RowBox[{"Length", "[", "colorsheet", "]"}]}], ",", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"playercolorsubs", "[", 
+        RowBox[{"colorsheet", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "=", 
+       RowBox[{"RGBColor", "@@", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"ToExpression", "[", 
+           RowBox[{"colorsheet", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", "2"}], "]"}], "]"}], "]"}], "/", "255"}], 
+         ")"}]}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"territorysheet", " ", "=", " ", 
+   RowBox[{"getsheet", "[", "\"\<TerritoryData\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "territoryfilesubs", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", " ", "=", " ", "2"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"Length", "[", "territorysheet", "]"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"territoryfilesubs", "[", 
+       RowBox[{"territorysheet", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "=", 
+      RowBox[{"territorysheet", "[", 
+       RowBox[{"[", 
+        RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.624462667850318*^9, 3.6244626979782257`*^9}, {
+  3.624462732804632*^9, 3.624462775924535*^9}, {3.6244632682634773`*^9, 
+  3.6244633292999763`*^9}, {3.624463391442132*^9, 3.624463511390977*^9}, {
+  3.624463555887081*^9, 3.624463666675395*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Actually Displaying Stuff", "Section",
+ CellChangeTimes->{{3.624467974260635*^9, 3.624467982341404*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.624483931587195*^9, 3.624483971057228*^9}, {
+   3.624484029475401*^9, 3.624484030065958*^9}, {3.6244840624305573`*^9, 
+   3.6244840716314507`*^9}, 3.624551008753049*^9, 3.625186950345971*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"TerritoryFiles", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<aden\>\"", ",", "\n", "\"\<afghanistan\>\"", ",", "\n", 
+     "\"\<alaska\>\"", ",", "\n", "\"\<albania\>\"", ",", "\n", 
+     "\"\<algeria\>\"", ",", "\n", "\"\<americanmidwest\>\"", ",", "\n", 
+     "\"\<americannorthwest\>\"", ",", "\n", "\"\<americansouth\>\"", ",", 
+     "\n", "\"\<americansouthwest\>\"", ",", "\n", "\"\<angolia\>\"", ",", 
+     "\n", "\"\<ankara\>\"", ",", "\n", "\"\<apulia\>\"", ",", "\n", 
+     "\"\<argentina\>\"", ",", "\n", "\"\<armenia\>\"", ",", "\n", 
+     "\"\<beijing\>\"", ",", "\n", "\"\<belgium\>\"", ",", "\n", 
+     "\"\<berlin\>\"", ",", "\n", "\"\<bohemia\>\"", ",", "\n", 
+     "\"\<borneo\>\"", ",", "\n", "\"\<brazil\>\"", ",", "\n", 
+     "\"\<brest\>\"", ",", "\n", "\"\<britishcolumbia\>\"", ",", "\n", 
+     "\"\<budapest\>\"", ",", "\n", "\"\<bulgaria\>\"", ",", "\n", 
+     "\"\<burg\>\"", ",", "\n", "\"\<burma\>\"", ",", "\n", 
+     "\"\<centralamerica\>\"", ",", "\n", "\"\<chad\>\"", ",", "\n", 
+     "\"\<clyde\>\"", ",", "\n", "\"\<congo\>\"", ",", "\n", "\"\<const\>\"", 
+     ",", "\n", "\"\<denmark\>\"", ",", "\n", "\"\<eastaustralia\>\"", ",", 
+     "\n", "\"\<eastnewguinea\>\"", ",", "\n", "\"\<eastsiberia\>\"", ",", 
+     "\n", "\"\<edinburgh\>\"", ",", "\n", "\"\<egypt\>\"", ",", "\n", 
+     "\"\<finland\>\"", ",", "\n", "\"\<galacia\>\"", ",", "\n", 
+     "\"\<gascony\>\"", ",", "\n", "\"\<greece\>\"", ",", "\n", 
+     "\"\<guangzhou\>\"", ",", "\n", "\"\<hawaii\>\"", ",", "\n", 
+     "\"\<hokkaido\>\"", ",", "\n", "\"\<holland\>\"", ",", "\n", 
+     "\"\<honshu\>\"", ",", "\n", "\"\<india\>\"", ",", "\n", 
+     "\"\<indochina\>\"", ",", "\n", "\"\<iraq\>\"", ",", "\n", 
+     "\"\<kamchaka\>\"", ",", "\n", "\"\<kazakh\>\"", ",", "\n", 
+     "\"\<khabarovsk\>\"", ",", "\n", "\"\<kiel\>\"", ",", "\n", 
+     "\"\<korea\>\"", ",", "\n", "\"\<libya\>\"", ",", "\n", 
+     "\"\<liverpool\>\"", ",", "\n", "\"\<livonia\>\"", ",", "\n", 
+     "\"\<london\>\"", ",", "\n", "\"\<madagascar\>\"", ",", "\n", 
+     "\"\<malaya\>\"", ",", "\n", "\"\<manchuria\>\"", ",", "\n", 
+     "\"\<marianasislands\>\"", ",", "\n", "\"\<mars\>\"", ",", "\n", 
+     "\"\<mexico\>\"", ",", "\n", "\"\<moscow\>\"", ",", "\n", 
+     "\"\<munich\>\"", ",", "\n", "\"\<naples\>\"", ",", "\n", 
+     "\"\<newcaledonia\>\"", ",", "\n", "\"\<newengland\>\"", ",", "\n", 
+     "\"\<newzealand\>\"", ",", "\n", "\"\<na\>\"", ",", "\n", 
+     "\"\<northsakalin\>\"", ",", "\n", "\"\<northwestterritories\>\"", ",", 
+     "\n", "\"\<norway\>\"", ",", "\n", "\"\<ontario\>\"", ",", "\n", 
+     "\"\<outermongolia\>\"", ",", "\n", "\"\<pacificcoast\>\"", ",", "\n", 
+     "\"\<pakistan\>\"", ",", "\n", "\"\<paris\>\"", ",", "\n", 
+     "\"\<peru\>\"", ",", "\n", "\"\<phillippines\>\"", ",", "\n", 
+     "\"\<picardy\>\"", ",", "\n", "\"\<piedmont\>\"", ",", "\n", 
+     "\"\<port\>\"", ",", "\n", "\"\<prussia\>\"", ",", "\n", 
+     "\"\<quebec\>\"", ",", "\n", "\"\<rome\>\"", ",", "\n", "\"\<ruhr\>\"", 
+     ",", "\n", "\"\<rumania\>\"", ",", "\n", "\"\<russia\>\"", ",", "\n", 
+     "\"\<saudiaarabia\>\"", ",", "\n", "\"\<serbia\>\"", ",", "\n", 
+     "\"\<sev\>\"", ",", "\n", "\"\<sichuan\>\"", ",", "\n", 
+     "\"\<silesia\>\"", ",", "\n", "\"\<sinkiang\>\"", ",", "\n", 
+     "\"\<smyrna\>\"", ",", "\n", "\"\<somalia\>\"", ",", "\n", 
+     "\"\<southafrica\>\"", ",", "\n", "\"\<southsakalin\>\"", ",", "\n", 
+     "\"\<spain\>\"", ",", "\n", "\"\<stp\>\"", ",", "\n", "\"\<sumatra\>\"", 
+     ",", "\n", "\"\<sweden\>\"", ",", "\n", "\"\<syria2\>\"", ",", "\n", 
+     "\"\<syria\>\"", ",", "\n", "\"\<tanganyika\>\"", ",", "\n", 
+     "\"\<thailand\>\"", ",", "\n", "\"\<tibet\>\"", ",", "\n", 
+     "\"\<trieste\>\"", ",", "\n", "\"\<tunis\>\"", ",", "\n", 
+     "\"\<tuscany\>\"", ",", "\n", "\"\<tyrolia\>\"", ",", "\n", 
+     "\"\<ukraine\>\"", ",", "\n", "\"\<usa\>\"", ",", "\n", "\"\<uzbek\>\"", 
+     ",", "\n", "\"\<venezuela\>\"", ",", "\n", "\"\<venice\>\"", ",", "\n", 
+     "\"\<vienna\>\"", ",", "\n", "\"\<wales\>\"", ",", "\n", 
+     "\"\<warsaw\>\"", ",", "\n", "\"\<westafrica\>\"", ",", "\n", 
+     "\"\<westaustralia\>\"", ",", "\n", "\"\<westnewguinea\>\"", ",", "\n", 
+     "\"\<westsiberia\>\"", ",", "\n", "\"\<yorkshire\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "image", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"underlay", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"UnderlayFile", ",", "\"\<Image\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", 
+    RowBox[{"Length", "[", "TerritoryFiles", "]"}]}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"image", "[", 
+      RowBox[{"TerritoryFiles", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], "]"}], "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+       RowBox[{"ImageInputDirectory", "<>", "\"\</\>\"", "<>", 
+        RowBox[{"TerritoryFiles", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "<>", "\"\<_inner.png\>\""}], ",", 
+       "\"\<Image\>\""}], "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.624483918897663*^9, 3.624483919179984*^9}, 
+   3.624484047468577*^9, {3.624484109843505*^9, 3.624484111475049*^9}, {
+   3.624484377351527*^9, 3.624484384087521*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"getimage", "[", 
+   RowBox[{"name_", ",", "color_"}], "]"}], ":=", 
+  RowBox[{"ImageMultiply", "[", 
+   RowBox[{
+    RowBox[{"image", "[", "name", "]"}], ",", "color"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"updatemap", "[", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"runtimestart", " ", "=", " ", 
+      RowBox[{"AbsoluteTime", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"csv", " ", "=", " ", 
+      RowBox[{"URLSave", "[", 
+       RowBox[{"url", ",", " ", "\"\<~/Desktop/xls.xlsx\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"sheetdata", " ", "=", " ", 
+      RowBox[{"Import", "[", " ", "\"\<~/Desktop/xls.xlsx\>\"", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"sheetnames", " ", "=", " ", 
+      RowBox[{"Import", "[", " ", 
+       RowBox[{"\"\<~/Desktop/xls.xlsx\>\"", ",", "\"\<Sheets\>\""}], "]"}]}],
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"turnname", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"getsheet", "[", "\"\<HiddenData\>\"", "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}], "//", "Round"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"turnsheet", " ", "=", " ", 
+      RowBox[{"getsheet", "[", 
+       RowBox[{"\"\<Turn \>\"", "<>", 
+        RowBox[{"ToString", "[", "turnname", "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"placenames", " ", "=", " ", 
+      RowBox[{"turnsheet", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"2", ";;"}], ",", "1"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"placeowners", " ", "=", " ", 
+      RowBox[{"turnsheet", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"2", ";;"}], ",", "2"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "Figure", " ", "out", " ", "what", " ", "the", " ", "player", " ", 
+       "colors", " ", "are"}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"colorsheet", " ", "=", " ", 
+      RowBox[{"getsheet", "[", "\"\<PlayerData\>\"", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Clear", "[", "playercolorsubs", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", " ", "=", " ", "2"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "colorsheet", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"playercolorsubs", "[", 
+          RowBox[{"colorsheet", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "=", 
+         RowBox[{"RGBColor", "@@", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"ToExpression", "[", 
+             RowBox[{"colorsheet", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", "2"}], "]"}], "]"}], "]"}], "/", "255"}], 
+           ")"}]}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"playercolorsubs", "[", "\"\<\>\"", "]"}], "=", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "1", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]",
+      "\[IndentingNewLine]", 
+     RowBox[{"territorysheet", " ", "=", " ", 
+      RowBox[{"getsheet", "[", "\"\<TerritoryData\>\"", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Clear", "[", "territoryfilesubs", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", " ", "=", " ", "2"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "territorysheet", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"territoryfilesubs", "[", 
+          RowBox[{"territorysheet", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "=", 
+         RowBox[{"territorysheet", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"territoryfiles", "=", 
+      RowBox[{"territoryfilesubs", "/@", "placenames"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"territorycolors", " ", "=", " ", 
+      RowBox[{"playercolorsubs", "/@", "placeowners"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"out", " ", "=", " ", "underlay"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"Length", "[", "territoryfiles", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"out", " ", "=", " ", 
+         RowBox[{"ImageCompose", "[", 
+          RowBox[{"out", ",", 
+           RowBox[{"getimage", "[", 
+            RowBox[{
+             RowBox[{"territoryfiles", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", 
+             RowBox[{"territorycolors", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], "]"}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"displayimage", " ", "=", " ", "out"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"runtime", " ", "=", " ", "runtimestart"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"updatemap", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.6244841332665157`*^9, 3.6244841896648808`*^9}, {
+   3.624484292387236*^9, 3.624484292636601*^9}, {3.6244843510204687`*^9, 
+   3.624484356181594*^9}, {3.624484528004404*^9, 3.624484628732791*^9}, {
+   3.6245419008294153`*^9, 3.624541926061635*^9}, 3.624542268521688*^9, {
+   3.624542335385701*^9, 3.6245423355601587`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"Refresh", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"display", " ", "=", " ", 
+     RowBox[{"Grid", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"DateString", "[", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Hour\>\"", ",", "\"\<:\>\"", ",", "\"\<Minute\>\"", ",", 
+            "\"\<:\>\"", ",", "\"\<Second\>\""}], "}"}], "]"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Current Turn: \>\"", "<>", 
+          RowBox[{"ToString", "[", "turnname", "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Last Update: \>\"", "<>", " ", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"Floor", "[", 
+            RowBox[{
+             RowBox[{"AbsoluteTime", "[", "]"}], "-", "runtime"}], "]"}], 
+           "]"}], "<>", " ", "\"\< seconds ago\>\""}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", "displayimage", "}"}]}], "\[IndentingNewLine]", "}"}], 
+      "]"}]}], "\[IndentingNewLine]", ",", 
+    RowBox[{"UpdateInterval", "\[Rule]", "1"}]}], "]"}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"While", "[", 
+  RowBox[{"True", ",", " ", 
+   RowBox[{
+    RowBox[{"updatemap", "[", "]"}], ";", 
+    RowBox[{"Pause", "[", "30", "]"}], ";"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.624542340592779*^9, 3.6245423532012*^9}, {
+  3.6245423940274363`*^9, 3.6245423966392117`*^9}, {3.624542569173916*^9, 
+  3.624542573203685*^9}, {3.6245887166735773`*^9, 3.624588716892706*^9}, {
+  3.625187001762146*^9, 3.625187002042062*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   Refresh[$CellContext`display = Grid[{{
+        DateString[{"Hour", ":", "Minute", ":", "Second"}]}, {
+        StringJoin["Current Turn: ", 
+         ToString[$CellContext`turnname]]}, {
+        StringJoin["Last Update: ", 
+         ToString[
+          Floor[AbsoluteTime[] - $CellContext`runtime]], 
+         " seconds ago"]}, {$CellContext`displayimage}}], UpdateInterval -> 
+    1], StandardForm],
+  ImageSizeCache->{212., {88.634033203125, 94.365966796875}}]], "Output",
+ CellChangeTimes->{3.624542355069886*^9, 3.624542400265154*^9, 
+  3.6245425758714447`*^9, 3.6245429646233273`*^9, 3.6245510369907427`*^9, 
+  3.625187005724269*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1679, 1092},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 272, 6, 30, "Text"],
+Cell[833, 28, 974, 25, 114, "Input"],
+Cell[1810, 55, 1912, 44, 148, "Input"],
+Cell[3725, 101, 3313, 92, 335, "Input"],
+Cell[CellGroupData[{
+Cell[7063, 197, 110, 1, 64, "Section"],
+Cell[7176, 200, 240, 3, 28, "Input"],
+Cell[7419, 205, 5462, 94, 2239, "Input"],
+Cell[12884, 301, 6119, 142, 726, "Input"],
+Cell[CellGroupData[{
+Cell[19028, 447, 1700, 39, 199, "Input"],
+Cell[20731, 488, 675, 14, 201, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+#map_div {
+  hwight: 454px;
+  width: 619px;
+  position: relative;
+}
+#map_div img {
+  height: 454px;
+  width: 619px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.territory {
+  z-index:1;
+}
+.background_img {
+  z-index:0;
+}
+body  {
+  background-color: grey;
+}
+
+#resource_div th {
+  width: 50px;
+  overflow: hidden;
+}
+#resource_div td {
+  width: 50px;
+}
+
+#selector_div #selector_ul {
+  list-style: none;
+}
+#selector_div .selector_territory_span {
+  display: inline-block;
+  overflow: hidden;
+  width: 150px;
+}
+#selector_div .prev_owner_span {
+  display: inline-block;
+  overflow: hidden;
+  width: 150px;
+}
+#selector_div .current_owner_span {
+  display: inline-block;
+  overflow: hidden;
+  width: 150px;
+}
+#selector_div select.different_option {
+  color: red;
+}
+#selector_div select.same_option {
+  color: black;
+}
+#selector_div option.different_option {
+  color: red;
+}
+#selector_div option.same_option {
+  color: black;
+}
+
+#status_header button {
+}
+
+</style>
+  <script src="jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="gameData.js" type="text/javascript"></script>
+  <script src="game.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div id=status_header>
+  <p id=viewing_turn_header>
+    Viewing turn 1 / 1
+  </p>
+</div>
+
+<div id=actions>
+  <button type="button" onclick="previousTurnButton()">Show Previous Turn</button>
+  <button type="button" onclick="nextTurnButton()">Show Next Turn</button>
+  <button type="button" onclick="newTurnButton()">New Turn</button>
+  <button type="button" onclick="deleteLaterTurnsButton()">Delete Later Turns</button>
+  <button type="button" onclick="resetGameButton()">Reset Game</button>
+  <button type="button" onclick="popOutMapButton()">Pop Out Map</button>
+</div>
+
+<div id=resource_div>
+Resources generated this turn by territories controlled at the end of
+last turn. The expected changes for next turn are shown in red.
+</div>
+
+<div id=selector_div margin-top:500px>
+  <ul id=selector_ul>
+    <li style="font-weight:bold">
+      <span class="selector_territory_span">Territory</span><span class="prev_owner_span">Owner at Turn Start</span><span class="current_owner_span">Current Owner</span>
+    </li>
+  </ul>
+</div>
+
+<div id=map_div>
+  <img class=background_img src="./resources/overlay2.png">
+ <!-- <img class=territory src="resources/americanmidwest_inner.png"/> -->
+</div>
+
+</body>
+</html>
