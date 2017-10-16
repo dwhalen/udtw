@@ -59,3 +59,5 @@ Each team needs to start with the following things. They should be compiled into
 	i) Making players write down orders is important; it slows down gameplay, ensures that players are spending the correct resources, prevents problems from players simultaneously moving units, prevents team members who are not familiar with the unit-moving rules from violating them, and forces the players to commit. I generally did not read the orders, just accepted the piece of paper and asked the player to resolve it.
 
 5) The javascript interface
+There is a hacked-together script for automatically calculating resources production in web_interfaces/game.html. The script also can display in a new window, a dynamically updated map showing current territory ownership.
+The script can be accessed directly online (https://rawgit.com/dwhalen/udtw/master/web_interface/game.html), although certain browsers may require that you download it and load the page locally.
